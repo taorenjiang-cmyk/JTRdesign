@@ -1,0 +1,183 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* 经典设计师字体 */
+    color: #333;
+    background-color: #f9f9f9;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    padding: 80px 0 60px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #007AFF; /* 你的品牌色 */
+}
+
+/* 瀑布流核心代码 */
+.gallery {
+    column-count: 3; /* 默认3列 */
+    column-gap: 20px;
+}
+
+.gallery-item {
+    break-inside: avoid; /* 防止图片被切断 */
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* 悬停效果 */
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 80px 0;
+    background: #fff;
+    margin-top: 60px;
+}
+
+.social-links {
+    margin: 20px 0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* 灯箱效果 (Lightbox) */
+.lightbox {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9); 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    animation: zoom 0.3s;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #bbb;
+}
+
+#caption {
+    margin-top: 20px;
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+@keyframes zoom {
+    from {transform:scale(0.8)} 
+    to {transform:scale(1)}
+}
+
+/* 响应式调整 */
+@media (max-width: 900px) {
+    .gallery {
+        column-count: 2; /* 平板2列 */
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        column-count: 1; /* 手机1列 */
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}
